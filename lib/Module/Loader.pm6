@@ -40,7 +40,7 @@ sub describe-compunit(CompUnit $compunit --> Str) is export {
         "Name (short-name): $compunit.short-name()",
         "Distribution:      $compunit.distribution()",
         "Repo prefix:       {$compunit.repo.perl}",
-        "Is-precompiled:    $compunit.precompiled",
+        "Is-precompiled:    $compunit.precompiled()",
 
 }
 
