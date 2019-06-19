@@ -1,0 +1,36 @@
+{
+  "provides": {
+    "Module::Loader": "lib/Module/Loader.pm6",
+    "Module::Pod": "lib/Module/Pod.pm6"
+  },
+  "production": false,
+  "support": {
+    "source": "git://github.com/dmaestro/:Module-Loader.git"
+  },
+  "depends": [
+    "Path::Temp"
+  ],
+  "auth": "github:dmaestro",
+  "version": "0",
+  "name": "Module::Loader",
+  "license": "Artistic-2.0",
+  "source-url": "git://github.com/dmaestro/:Module-Loader.git",
+  "tags": [
+    
+  ],
+  "meta-version": "0",
+  "perl": "6",
+  "test-depends": [
+    "Test"
+  ],
+  "build-depends": [
+    
+  ],
+  "authors": [
+    "dmaestro <dmaestro@cpan.org>"
+  ],
+  "description": "A Distribution",
+  "resources": [
+    
+  ]
+}

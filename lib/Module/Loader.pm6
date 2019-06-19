@@ -1,10 +1,17 @@
 use v6;
 unit class Module::Loader;
+# Some code based on https://github.com/perl6/doc/blob/master/lib/Pod/Convenience.pm6#L116-L132
+
+use Temp::Path;
 
 has Str                     $.module;
 has CompUnit::Repository    $.root-repo = $*REPO;
 has                         @!compunits;
-has                         $.precomp = CompUnit::PrecompilationRepository::Default.new();
+has                         $.precomp = CompUnit::PrecompilationRepository::Default.new(
+                                store => CompUnit::PrecompilationStore::File.new(
+                                    prefix => make-temp-dir :suffix('.precompiled')
+                                )
+                            );
 has Int                     $.index is rw = 0;
 
 method spec() returns CompUnit::DependencySpecification {
