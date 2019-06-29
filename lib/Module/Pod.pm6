@@ -4,10 +4,15 @@ unit class Module::Pod;
 # Some code based on https://github.com/perl6/doc/blob/master/lib/Pod/Convenience.pm6#L116-L132
 
 use nqp;
+use Temp::Path;
 
 has IO::Path    $.file-handle;
 has CompUnit::PrecompilationRepository
-                $.precomp is required;
+                $.precomp = CompUnit::PrecompilationRepository::Default.new(
+                    store => CompUnit::PrecompilationStore::File.new(
+                        prefix => make-temp-dir :suffix('.precompiled')
+                    )
+                );
 
 has IO::Path    $!resolved-file;
 method file {
@@ -43,7 +48,7 @@ use Module::Pod;
 
 my $l = Module::Loader.new(module => <Seq::Bounded>);
 say describe-compunit($l.compunit);
-say Module::Pod.new(:file-handle($l.loadable-file), :precomp($l.precomp)).pod'
+say Module::Pod.new(:file-handle($l.loadable-file)).pod'
 
 =end code
 

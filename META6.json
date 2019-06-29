@@ -8,7 +8,7 @@
     "source": "git://github.com/dmaestro/:Module-Loader.git"
   },
   "depends": [
-    "Path::Temp"
+    "Temp::Path"
   ],
   "auth": "github:dmaestro",
   "version": "0",
