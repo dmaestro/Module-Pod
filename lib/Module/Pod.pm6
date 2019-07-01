@@ -20,7 +20,7 @@ method file {
         $!file-handle.resolve;
 }
 
-has Str             $!id;
+has Str         $!id;
 method id {
     $!id //=
         nqp::sha1($.file.Str);

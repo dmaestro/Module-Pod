@@ -35,6 +35,20 @@ method file() returns Str {
     return $file-descriptor;
 }
 
+method loadable-file() {
+    my $loadable-file = self.compunit.distribution.prefix.add(self.file);
+}
+
+method compunit-loaded() {
+    my $cu = self.compunit;
+    my $repo = $cu.repo;
+    for $repo.loaded -> $lcu {
+        return $cu
+            if $lcu.short-name eqv $cu.short-name;
+    }
+    return;
+}
+
 sub describe-compunit(CompUnit $compunit --> Str) is export {
     join IO.nl-out,
         "Name (short-name): $compunit.short-name()",
@@ -42,8 +56,4 @@ sub describe-compunit(CompUnit $compunit --> Str) is export {
         "Repo prefix:       {$compunit.repo.perl}",
         "Is-precompiled:    $compunit.precompiled()",
 
-}
-
-method loadable-file () {
-    my $loadable-file = self.compunit.distribution.prefix.add(self.file);
 }
