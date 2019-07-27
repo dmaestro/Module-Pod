@@ -26,9 +26,19 @@ method id {
         nqp::sha1($.file.Str);
 }
 
+has CompUnit    $.compunit;
+method loaded-compunit-handle() {
+    with $!compunit {
+        say $!compunit.perl;
+    #   return unless .precomp;
+        return $!compunit.handle;
+    }
+}
+
 has                 $!precomp-handle;
 method precomp-handle {
     $!precomp-handle //=
+        $.loaded-compunit-handle //
         $.precomp.load($.id, :since($.file.modified))[0]
         || do { $.precomp.precompile($.file, $.id, :force);
             $!precomp.load($.id)[0];
