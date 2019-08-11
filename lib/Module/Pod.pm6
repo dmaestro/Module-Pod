@@ -25,6 +25,20 @@ my $pod1 = pod-from-module(Module::Loader);
 
 =end SYNOPSIS
 
+=begin DESCRIPTION
+
+This module is able to load external Perl 6 modules and provide the
+documentation object from its C<$=pod> variable. This allows, for example,
+running tests against the documentation, without requiring special hooks in the
+external module to expose that variable.
+
+C<Module::Pod> exports a helper function, C<pod-from-module()>, which accepts
+either a string (short-name) or a type object specifying the external module
+desired. It returns a <Positional> containing C<Pod::Block> objects, exactly
+as C<$=pod> does within it's own compilation unit.
+
+=end DESCRIPTION
+
 =end pod
 
 use nqp;
@@ -56,7 +70,10 @@ method pod() {
 =EXPORTS
 
 #| Get the $=pod from the named module
-sub pod-from-module(Module::Loader::ModuleName $module) is export {
+sub pod-from-module(Module::Loader::ModuleName $module)
+        returns Positional
+        is export
+{
     my $loader = Module::Loader.new(module => $module);
     Module::Pod.new(loader => $loader).pod;
 }
