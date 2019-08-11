@@ -1,36 +1,39 @@
 {
-  "provides": {
-    "Module::Loader": "lib/Module/Loader.pm6",
-    "Module::Pod": "lib/Module/Pod.pm6"
-  },
-  "production": false,
-  "support": {
-    "source": "git://github.com/dmaestro/:Module-Loader.git"
-  },
-  "depends": [
-    "Temp::Path"
-  ],
   "auth": "github:dmaestro",
-  "version": "0.9",
-  "name": "Module::Pod",
-  "license": "Artistic-2.0",
-  "source-url": "git://github.com/dmaestro/Module-Loader.git",
-  "tags": [
-    
-  ],
-  "meta-version": "0",
-  "perl": "6",
-  "test-depends": [
-    "Test"
-  ],
+  "production": false,
+  "source-url": "git://github.com/dmaestro/Module-Pod.git",
   "build-depends": [
     
   ],
+  "support": {
+    "source": "git://github.com/dmaestro/Module-Pod.git"
+  },
+  "provides": {
+    "Module::Pod": "lib/Module/Pod.pm6",
+    "Module::Loader": "lib/Module/Loader.pm6"
+  },
   "authors": [
     "dmaestro <dmaestro@cpan.org>"
   ],
-  "description": "A Distribution",
+  "tags": [
+    "Pod",
+    "Pod6",
+    "CompUnit"
+  ],
+  "description": "Get $=pod from an external module",
+  "version": "0.9.1",
+  "test-depends": [
+    "Test",
+    "Test::META"
+  ],
   "resources": [
     
-  ]
+  ],
+  "depends": [
+    
+  ],
+  "name": "Module::Pod",
+  "perl": "6.*",
+  "meta-version": "0",
+  "license": "Artistic-2.0"
 }

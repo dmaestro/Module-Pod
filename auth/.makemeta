@@ -1,0 +1,23 @@
+use META6;
+
+my $m = META6.new(
+    name        => 'Module::Pod',
+    description => 'Get $=pod from an external module',
+    version     => Version.new('0.9.1'),
+    perl-version => Version.new('6.*'),
+    test-depends => <Test Test::META>,
+    tags        => <Pod Pod6 CompUnit>,
+    authors     => ['dmaestro <dmaestro@cpan.org>'],
+    auth        => 'github:dmaestro',
+    source-url  => 'git://github.com/dmaestro/Module-Pod.git',
+    support     => META6::Support.new(
+        source => 'git://github.com/dmaestro/Module-Pod.git'
+    ),
+    provides    => {
+        'Module::Loader' => 'lib/Module/Loader.pm6',
+        'Module::Pod'    => 'lib/Module/Pod.pm6',
+    },
+    license     => 'Artistic-2.0',
+    production  => False,
+);
+spurt('./META6.json', $m.to-json);
