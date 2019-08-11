@@ -31,3 +31,29 @@ sub describe-compunit(CompUnit $compunit --> Str) is export {
         "Repo prefix:       {$compunit.repo.perl}",
         "Is-precompiled:    $compunit.precompiled()",
 }
+
+=begin pod
+
+=NAME Module::Loader
+
+=begin SYNOPSIS
+
+    use Module::Loader;
+
+    my $loader = Module::Loader.new(<My::Module>);
+    my $compunit = $loader.compunit;
+
+=end SYNOPSIS
+
+=begin DESCRIPTION
+
+This module searches for a module in the current list of repositories and
+returns a C<CompUnit> for that module.
+
+=end DESCRIPTION
+
+=LICENSE This file is licensed under the same terms as perl itself.
+
+=AUTHOR Doug Schrag <dmaestro@cpan.org>
+
+=end pod
