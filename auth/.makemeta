@@ -3,7 +3,7 @@ use META6;
 my $m = META6.new(
     name        => 'Module::Pod',
     description => 'Get $=pod from an external module',
-    version     => Version.new('0.9.1'),
+    version     => Version.new('0.9.2'),
     perl-version => Version.new('6.*'),
     test-depends => <Test Test::META>,
     tags        => <Pod Pod6 CompUnit>,

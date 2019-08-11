@@ -17,6 +17,13 @@ SYNOPSIS
 
     my $pod1 = pod-from-module(Module::Loader);
 
+DESCRIPTION
+===========
+
+This module is able to load external Perl 6 modules and provide the documentation object from its `$=pod` variable. This allows, for example, running tests against the documentation, without requiring special hooks in the external module to expose that variable.
+
+`Module::Pod` exports a helper function, `pod-from-module()`, which accepts either a string (short-name) or a type object specifying the external module desired. It returns a <Positional> containing `Pod::Block` objects, exactly as `$=pod` does within it's own compilation unit.
+
 ATTRIBUTES
 ==========
 
@@ -45,7 +52,7 @@ EXPORTS
 ```perl6
 sub pod-from-module(
     $module where { ... }
-) returns Mu
+) returns Positional
 ```
 
 Get the $=pod from the named module
